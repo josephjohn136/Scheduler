@@ -14,10 +14,12 @@ var HomeComponent = (function () {
     function HomeComponent(userService) {
         this.userService = userService;
         this.users = [];
+        this.appointments = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     HomeComponent.prototype.ngOnInit = function () {
         this.loadAllUsers();
+        this.getSlots();
     };
     HomeComponent.prototype.deleteUser = function (id) {
         var _this = this;
@@ -26,6 +28,145 @@ var HomeComponent = (function () {
     HomeComponent.prototype.loadAllUsers = function () {
         var _this = this;
         this.userService.getAll().subscribe(function (users) { _this.users = users; });
+    };
+    HomeComponent.prototype.getSlots = function () {
+        this.appointments = [
+            {
+                day: "Monday",
+                slots: [{
+                        time: '9:00am',
+                        booked: false
+                    },
+                    {
+                        time: '11:00am',
+                        booked: false
+                    },
+                    {
+                        time: '1:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '3:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '5:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '7:00pm',
+                        booked: false
+                    }]
+            },
+            {
+                day: "Tuesday",
+                slots: [{
+                        time: '9:00am',
+                        booked: false
+                    },
+                    {
+                        time: '11:00am',
+                        booked: false
+                    },
+                    {
+                        time: '1:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '3:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '5:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '7:00pm',
+                        booked: false
+                    }]
+            },
+            {
+                day: "Wednesday",
+                slots: [{
+                        time: '9:00am',
+                        booked: false
+                    },
+                    {
+                        time: '11:00am',
+                        booked: false
+                    },
+                    {
+                        time: '1:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '3:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '5:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '7:00pm',
+                        booked: false
+                    }]
+            },
+            {
+                day: "Thursday",
+                slots: [{
+                        time: '9:00am',
+                        booked: false
+                    },
+                    {
+                        time: '11:00am',
+                        booked: false
+                    },
+                    {
+                        time: '1:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '3:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '5:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '7:00pm',
+                        booked: false
+                    }]
+            },
+            {
+                day: "Friday",
+                slots: [{
+                        time: '9:00am',
+                        booked: false
+                    },
+                    {
+                        time: '11:00am',
+                        booked: false
+                    },
+                    {
+                        time: '1:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '3:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '5:00pm',
+                        booked: false
+                    },
+                    {
+                        time: '7:00pm',
+                        booked: false
+                    }]
+            }
+        ];
     };
     return HomeComponent;
 }());

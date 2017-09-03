@@ -1,4 +1,4 @@
-﻿<div class="col-md-6 col-md-offset-3">
+﻿<!--<div class="col-md-6 col-md-offset-3">
     <h1>Hi {{currentUser.firstName}}!</h1>
     <p>You're logged in with Angular 2!!</p>
     <h3>All registered users:</h3>
@@ -9,4 +9,30 @@
         </li>
     </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
+</div>-->
+<div class="col-md-12">
+    <p><a [routerLink]="['/login']">Logout</a></p>
+    <p class="text-center">What time would you like to meet?<br>
+        
+  <div class="row times">
+    
+    <div class="col-md-2 text-center" *ngFor="let appointment of appointments">
+              
+      <h2>{{ appointment.day }}</h2>
+      
+      <div class="time-slot" *ngFor="let slot of appointment.slots; let i = index"> 
+          
+ 	
+        <input type="checkbox" id="{{ appointment.day }}-{{ i }}" [(ngModel)]="slot.booked" ngDisabled="slot.booked">
+        <label for="{{ appointment.day }}-{{ i }}">{{ slot.time }}<br>
+          <span *ngIf="slot.booked">Booked</span>
+          <span *ngIf="!slot.booked">Available</span>
+        </label>
+      </div>
+    </div>       
+      
+  </div>    
+  <p class="text-center">    
+    <a href="#" ngClick="reset()" class="btn btn-primary">Reset</a>
+  </p>
 </div>
